@@ -42,8 +42,18 @@ public class Magpie
         {
             response = "Tell me more about your family.";
         }
-        else
+        else if (statement.indexOf("dog") >= 0 
+                || statement.indexOf("cat") >= 0) 
         {
+            response = "Tell me more about your pets.";
+        }
+        else if (statement.indexOf("Nathan") >= 0
+                || statement.indexOf("nathan") >= 0)
+        {
+            response = "He sounds like a good teacher.";
+        }
+        else if (statement)
+        else {
             response = getRandomResponse();
         }
         return response;
@@ -66,7 +76,7 @@ public class Magpie
         }
         else if (whichResponse == 1)
         {
-            response = "Hmmm.";
+            response = "k";
         }
         else if (whichResponse == 2)
         {
@@ -102,9 +112,7 @@ public class Magpie
      * @param statement the user statement, assumed to contain "I want"
      * @return the transformed statement
      */
-    public String transformIWantStatement(String statement)
-    {
-        //your code here
+    public String transformIWantStatement(String statement) {
         return "";
     }
 
