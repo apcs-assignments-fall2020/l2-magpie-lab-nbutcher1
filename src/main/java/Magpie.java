@@ -20,7 +20,6 @@ public class Magpie
     {
         return "Hello, let's talk.";
     }
-    
     /**
      * Gives a response to a user statement
      * 
@@ -52,7 +51,13 @@ public class Magpie
         {
             response = "He sounds like a good teacher.";
         }
-        else if (statement)
+        else if (statement != " ") {
+            response = "Can you say something?";
+        }
+        else if (statement.indexOf("minecraft") >= 0)
+        {
+            response = "I love minecraft";
+        }
         else {
             response = getRandomResponse();
         }
@@ -65,7 +70,7 @@ public class Magpie
      */
     public String getRandomResponse()
     {
-        final int NUMBER_OF_RESPONSES = 4;
+        final int NUMBER_OF_RESPONSES = 6;
         double r = Math.random();
         int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
         String response = "";
@@ -86,6 +91,14 @@ public class Magpie
         {
             response = "You don't say.";
         }
+        else if (whichResponse == 4)
+        {
+            response = "aight then";
+        }
+        else if (whichResponse == 5)
+        {
+            response = "very cool";
+        }
     
         return response;
     }
@@ -100,6 +113,9 @@ public class Magpie
     // The method returns the index of the first character in word
     // if it is found, and returns -1 otherwise. 
     public int findWord(String str, String word) {
+        word = " " + word + " ";
+        if (str.indexOf(word) != -1)
+            return 2;
         return -1;
     }
 
