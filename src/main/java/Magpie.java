@@ -30,33 +30,37 @@ public class Magpie
     public String getResponse(String statement)
     {
         String response = "";
-        if (statement.indexOf("no") >= 0)
+        if (findWord("no", statement) >= 0)
         {
             response = "Why so negative?";
         }
-        else if (statement.indexOf("mother") >= 0
-                || statement.indexOf("father") >= 0
-                || statement.indexOf("sister") >= 0
-                || statement.indexOf("brother") >= 0)
+        else if (findWord("mother",statement) >= 0
+                || findWord("father",statement) >= 0
+                || findWord("sister",statement) >= 0
+                || findWord("brother",statement) >= 0)
         {
             response = "Tell me more about your family.";
         }
-        else if (statement.indexOf("dog") >= 0 
-                || statement.indexOf("cat") >= 0) 
+        else if (findWord("dog",statement) >= 0 
+                || findWord("cat",statement) >= 0) 
         {
             response = "Tell me more about your pets.";
         }
-        else if (statement.indexOf("Nathan") >= 0
-                || statement.indexOf("nathan") >= 0)
+        else if (findWord("Nathan",statement) >= 0
+                || findWord("nathan",statement) >= 0)
         {
             response = "He sounds like a good teacher.";
         }
-        else if (statement != " ") {
+        else if (statement == "k") {
             response = "Can you say something?";
         }
-        else if (statement.indexOf("minecraft") >= 0)
+        else if (findWord("minecraft",statement) >= 0)
         {
             response = "I love minecraft";
+        }
+        else if (findWord("want", statement) >0)
+        {
+            response = transformIWantStatement(statement);
         }
         else {
             response = getRandomResponse();
@@ -112,9 +116,9 @@ public class Magpie
 
     // The method returns the index of the first character in word
     // if it is found, and returns -1 otherwise. 
-    public int findWord(String str, String word) {
+    public int findWord(String word, String statement) {
         word = " " + word + " ";
-        if (str.indexOf(word) != -1)
+        if (statement.indexOf(word) != -1)
             return 2;
         return -1;
     }
@@ -129,7 +133,15 @@ public class Magpie
      * @return the transformed statement
      */
     public String transformIWantStatement(String statement) {
-        return "";
+        String thing = "";
+        int i = 1;
+        if (findWord("want",statement) != -1) {
+            while (statement.charAt(statement.indexOf("want") + 4 + i) != ' ' && statement.charAt(statement.indexOf("want") + 4 + i) < statement.length() - 1) {
+                    thing += statement.charAt(statement.charAt(statement.indexOf("want") + 4 + i));
+                i += 1;
+            }
+        }
+        return ("Will having " + thing + " make you happy?");
     }
 
     /**
@@ -140,7 +152,7 @@ public class Magpie
      */
     public String transformIYouStatement(String statement)
     {
-        //your code here
+        
         return "";
     }
 
