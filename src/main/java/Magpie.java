@@ -135,9 +135,10 @@ public class Magpie
     public String transformIWantStatement(String statement) {
         String thing = "";
         int i = 1;
-        if (findWord("want",statement) != -1) {
-            while (statement.charAt(statement.indexOf("want") + 4 + i) != ' ' && statement.charAt(statement.indexOf("want") + 4 + i) < statement.length() - 1) {
-                    thing += statement.charAt(statement.charAt(statement.indexOf("want") + 4 + i));
+        if (statement.indexOf("i want") != -1) {
+            int wants = statement.indexOf("want");
+            while (statement.charAt(wants + 4 + i) != ' ' && (wants + 4 + i) < statement.length() - 1) {
+                    thing += statement.charAt(wants + 4 + i);
                 i += 1;
             }
         }
@@ -164,8 +165,16 @@ public class Magpie
      */
     public String transformIWantToStatement(String statement)
     {
-        // your code here
-        return "";
+        String thing = "";
+        int i = 1;
+        if (statement.indexOf("i want to") != -1) {
+            int wants = statement.indexOf("i want to");
+            while (statement.charAt(wants + 9 + i) != ' ' && (wants + 9 + i) < statement.length() - 1) {
+                    thing += statement.charAt(wants + 9 + i);
+                i += 1;
+            }
+        }
+        return ("What will it mean to " + thing);
     }
 
 
@@ -179,7 +188,9 @@ public class Magpie
      */
     public String transformYouMeStatement(String statement)
     {
-        // your code here
+        String thing = "";
+        int i = 1;
+        if ()
         return "";
     }
 }
