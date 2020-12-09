@@ -62,9 +62,19 @@ public class Magpie
         {
             response = transformIWantStatement(statement);
         }
+        else if (findWord("you", statement) > 0 && findWord("me",statement) > 0)
+        {
+            response = transformYouMeStatement(statement);
+            
+        }
+        else if  (findWord("i", statement) > 0 && findWord("you",statement) > 0)
+        {
+            response = transformIYouStatement(statement);
+        }
         else {
             response = getRandomResponse();
         }
+        
         return response;
     }
     
@@ -119,7 +129,7 @@ public class Magpie
     public int findWord(String word, String statement) {
         word = " " + word + " ";
         if (statement.indexOf(word) != -1)
-            return 2;
+            return statement.indexOf(word);
         return -1;
     }
 
@@ -153,8 +163,20 @@ public class Magpie
      */
     public String transformIYouStatement(String statement)
     {
-        
-        return "";
+                String news = "";
+        if (findWord("i", statement) != -1)
+        {
+            if (findWord("you",statement) != -1)
+            {
+                int first = findWord("i", statement) + 3;
+                int second = findWord("you",statement);
+                for (int i = first; i < second; i++) 
+                {
+                    news += statement.charAt(i);
+                }
+            }
+        }
+        return "Why do you "+ news + " me?";
     }
 
     /**
@@ -188,9 +210,19 @@ public class Magpie
      */
     public String transformYouMeStatement(String statement)
     {
-        String thing = "";
-        int i = 1;
-        if ()
-        return "";
+        String news = "";
+        if (findWord("you", statement) != -1)
+        {
+            if (findWord("me",statement) != -1)
+            {
+                int first = findWord("you", statement) + 5;
+                int second = findWord("me",statement);
+                for (int i = first; i < second; i++) 
+                {
+                    news += statement.charAt(i);
+                }
+            }
+        }
+        return "What makes you think that I " + news + " you?";
     }
 }
