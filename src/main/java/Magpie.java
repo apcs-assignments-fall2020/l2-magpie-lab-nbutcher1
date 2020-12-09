@@ -58,9 +58,13 @@ public class Magpie
         {
             response = "I love minecraft";
         }
-        else if (findWord("want", statement) >0)
+        else if (findWord("i want", statement) >0)
         {
             response = transformIWantStatement(statement);
+        }
+        else if (findWord("i want to",statement)>0)
+        {           
+             respone = transformIWantToStatement(statement);
         }
         else if (findWord("you", statement) > 0 && findWord("me",statement) > 0)
         {
